@@ -5,7 +5,7 @@ Eleven self-contained UI exercises: static HTML/CSS/JS demos, two Vite + React a
 ## Quick start
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/kotinos/frontend-lab.git
 cd frontend-lab
 npm install
 npm test          # core + both Vite apps
