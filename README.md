@@ -10,8 +10,8 @@ cd frontend-lab
 npm install
 npm test          # core + both Vite apps
 npm run build     # production build: both apps
-npm run dev:landing   # http://localhost:5173 — AI landing
-npm run dev:three     # http://localhost:5173 — R3F product view
+npm run dev:landing   # http://127.0.0.1:5173 — AI landing
+npm run dev:three     # http://127.0.0.1:5174 — R3F product view
 ```
 
 Serve any static folder (needs network for CDNs/APIs where noted):
