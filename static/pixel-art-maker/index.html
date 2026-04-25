@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Atelier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="workspace">
+      <header>
+        <h1>Pixel Atelier</h1>
+        <p>Retro-modern grid · springy tools</p>
+      </header>
+      <div class="toolbar neu">
+        <button type="button" class="tool active" data-tool="pen" aria-pressed="true">Pen</button>
+        <button type="button" class="tool" data-tool="erase" aria-pressed="false">Erase</button>
+        <button type="button" class="tool" data-tool="fill" aria-pressed="false">Fill</button>
+      </div>
+      <div class="main">
+        <aside class="palette neu" id="palette" aria-label="Colors"></aside>
+        <div id="grid" class="grid wipe-target" role="application" aria-label="Pixel canvas"></div>
+      </div>
+      <button type="button" id="clear" class="clear neu">Clear canvas</button>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Finder</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="split">
+      <div id="map" class="map" role="presentation"></div>
+      <aside class="panel">
+        <header class="panel-head">
+          <h1>Cafe Finder</h1>
+          <p class="hint">Set <code>?token=YOUR_MAPBOX_TOKEN</code> or paste token below.</p>
+          <label class="token-row">
+            <span>Token</span>
+            <input id="token-input" type="password" autocomplete="off" placeholder="pk.eyJ…" />
+            <button type="button" id="apply-token" class="btn">Apply</button>
+          </label>
+        </header>
+        <div id="cards" class="cards"></div>
+      </aside>
+    </div>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

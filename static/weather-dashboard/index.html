@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  </head>
+  <body data-weather="clear">
+    <video id="bg" class="bg-video" autoplay muted loop playsinline></video>
+    <div class="scrim"></div>
+    <main class="layout">
+      <section class="glass hero">
+        <div class="loc">
+          <h1 id="city">Berlin</h1>
+          <p class="meta" id="condition">Loading…</p>
+        </div>
+        <div class="temp-block">
+          <span id="temp" class="temp">--°</span>
+          <div class="icon" id="icon" aria-hidden="true"></div>
+        </div>
+      </section>
+      <section class="glass chart-card">
+        <h2>24h trend</h2>
+        <canvas id="chart" height="120"></canvas>
+      </section>
+      <section class="glass forecast" aria-label="Five day forecast">
+        <h2>5-day outlook</h2>
+        <div id="days" class="days"></div>
+      </section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

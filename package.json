@@ -1,0 +1,16 @@
+{
+  "name": "frontend-lab",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "npm run test -w @frontend-lab/core && npm run test -w react-vite-landing && npm run test -w three-product-showcase",
+    "build": "npm run build -w react-vite-landing && npm run build -w three-product-showcase",
+    "dev:landing": "npm run dev -w react-vite-landing",
+    "dev:three": "npm run dev -w three-product-showcase"
+  }
+}

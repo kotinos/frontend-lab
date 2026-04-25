@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Text to Speech Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <textarea id="text" class="editor" rows="14" spellcheck="true" aria-label="Text to read">
+The voice you hear is sculpted air—pause, breathe, and let each sentence land.
+      </textarea>
+      <div class="dock" role="toolbar" aria-label="Playback controls">
+        <button type="button" id="play" class="morph" aria-pressed="false">
+          <span class="icon play"></span>
+          <span class="label">Speak</span>
+        </button>
+        <canvas id="wave" width="360" height="72" aria-hidden="true"></canvas>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

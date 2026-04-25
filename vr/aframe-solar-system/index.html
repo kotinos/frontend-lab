@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VR Solar System</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+      }
+      #hud {
+        position: fixed;
+        left: 50%;
+        bottom: 32px;
+        transform: translateX(-50%) translateY(20px);
+        padding: 1rem 1.25rem;
+        border-radius: 18px;
+        background: rgba(12, 16, 32, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #f4f7ff;
+        backdrop-filter: blur(16px);
+        max-width: min(520px, 92vw);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.45s ease, transform 0.45s ease;
+        z-index: 10;
+      }
+      #hud.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      #hud h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+      }
+      #hud p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.85;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hud" role="status" aria-live="polite">
+      <h2 id="hud-title">Planet</h2>
+      <p id="hud-body">Look at a planet to read facts.</p>
+    </div>
+    <a-scene
+      renderer="colorManagement: true; antialias: true"
+      background="color: #02030a"
+      fog="type: exponential; color: #02030a; density: 0.00035"
+    >
+      <a-assets>
+        <img
+          id="tex-earth"
+          crossorigin="anonymous"
+          src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_2048.jpg"
+        />
+      </a-assets>
+      <a-sky color="#030611"></a-sky>
+      <a-entity id="stars" particle-system="preset: star; particleCount: 12000; color: #dde6ff; size: 0.02"></a-entity>
+      <a-light type="point" intensity="1.6" distance="60" decay="2" color="#ffe6c2" position="0 2 -2"></a-light>
+      <a-light type="ambient" color="#445" intensity="0.35"></a-light>
+      <a-entity position="0 1.6 6">
+        <a-camera look-controls wasd-controls="enabled: false">
+          <a-cursor fuse="true" fuse-timeout="1400" raycaster="objects: .planet" color="#9cc4ff"></a-cursor>
+        </a-camera>
+      </a-entity>
+      <a-sphere
+        class="planet"
+        position="0 1.4 -4"
+        radius="0.55"
+        src="#tex-earth"
+        roughness="0.55"
+        metalness="0.05"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 26000; easing: linear"
+        data-title="Earth"
+        data-body="Blue marble, liquid water, and a protective magnetic field."
+      ></a-sphere>
+      <a-sphere
+        class="planet"
+        position="2.2 1.35 -5.5"
+        radius="0.32"
+        color="#c86b4c"
+        roughness="0.9"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 22000; easing: linear"
+        data-title="Mars"
+        data-body="Rusty dunes, thin atmosphere, and the tallest volcano in the solar system."
+      ></a-sphere>
+      <a-sphere
+        class="planet"
+        position="-2.6 1.5 -6"
+        radius="0.7"
+        color="#d4b48c"
+        roughness="0.45"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 18000; easing: linear"
+        data-title="Jupiter"
+        data-body="A gas giant with a storm wider than Earth—mostly hydrogen and helium."
+      ></a-sphere>
+      <a-entity position="0 0 -1" animation="property: rotation; to: 0 360 0; loop: true; dur: 120000; easing: linear">
+        <a-sphere
+          class="planet"
+          position="5.5 0.2 -1"
+          radius="0.12"
+          color="#d9e6ff"
+          emissive="#a8c6ff"
+          emissive-intensity="0.35"
+          data-title="Ice Moon"
+          data-body="A stand-in for icy moons—tidally locked, shimmering regolith."
+        ></a-sphere>
+      </a-entity>
+    </a-scene>
+    <script>
+      const hud = document.getElementById('hud')
+      const title = document.getElementById('hud-title')
+      const body = document.getElementById('hud-body')
+      let hideTimer
+      window.addEventListener('load', () => {
+        const scene = document.querySelector('a-scene')
+        scene.addEventListener('child-attached', () => {})
+        document.querySelectorAll('.planet').forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimer)
+            title.textContent = el.dataset.title ?? 'Planet'
+            body.textContent = el.dataset.body ?? ''
+            hud.classList.add('show')
+          })
+          el.addEventListener('mouseleave', () => {
+            hideTimer = setTimeout(() => hud.classList.remove('show'), 700)
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

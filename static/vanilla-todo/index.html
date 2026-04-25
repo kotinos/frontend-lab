@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Premium Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <h1>Today</h1>
+          <p class="sub">Drag to reorder · micro-motion on every state</p>
+        </div>
+        <div class="ring-wrap" aria-label="Daily completion">
+          <svg class="ring" viewBox="0 0 120 120" width="120" height="120">
+            <circle class="ring-bg" cx="60" cy="60" r="52" />
+            <circle class="ring-fg" cx="60" cy="60" r="52" />
+          </svg>
+          <div class="ring-label"><span id="pct">0</span>%</div>
+        </div>
+      </header>
+      <form id="add-form" class="neu inset row">
+        <input id="task-input" type="text" maxlength="200" placeholder="Add a task…" autocomplete="off" />
+        <button type="submit" class="neu raised btn">Add</button>
+      </form>
+      <ul id="list" class="list" aria-live="polite"></ul>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
